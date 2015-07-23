@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @event.place %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @event.adress %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @event.zip_code %>
+</p>
+
+<% if current_user && current_user.editor? %> 
+  <p class="recipe-edit"> 
+    <%= link_to "Edit Recipe", edit_event_path(@event.id) %> 
+  </p> 
+<% end %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> 
+|
+<%= link_to 'Back', events_path %>
