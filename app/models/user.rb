@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def editor?
-    self.role == nil 
+    self.role == nil
   end
 
   def admin?
