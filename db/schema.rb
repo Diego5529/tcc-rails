@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730020200) do
+ActiveRecord::Schema.define(version: 20150730032115) do
+
+  create_table "episodes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "archive"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
