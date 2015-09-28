@@ -33,4 +33,3 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
-config/secrets.yml
