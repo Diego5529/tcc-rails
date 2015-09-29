@@ -85,10 +85,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'gmail.com',
     user_name: 'footwear.clickjogos@gmail.com',
     password: 'clickjogos',
-    authentication: 'plain',
+    authentication: :plain,
     enable_starttls_auto: true,
     :openssl_verify_mode => 'none'  # This line added and it works fine
 }
