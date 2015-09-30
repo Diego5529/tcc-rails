@@ -77,15 +77,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.perform_deliveries = true # Set it to false to disable the email in dev mode
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'tcc-rails.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'http://tcc-rails.herokuapp.com' }
 
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.gmail.com',
-    :port           => 587,
-    :authentication => :plain,
-    :user_name      => 'footwear.clickjogos@gmail.com',
-    :password       => 'clickjogos'
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :address              => 'smtp.sendgrid.net',
+    :port                 => '587',
+    :domain               => 'heroku.com',
+    :user_name            => 'footwear.clickjogos@gmail.com',
+    :password             => 'clickjogos',
+    :authentication       => :plain,
+    :enable_starttls_auto => true
   }
 end
