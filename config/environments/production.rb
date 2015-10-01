@@ -83,8 +83,8 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => 'smtp.sendgrid.net',
-    :port                 => '2525',
+    :address              => 'smtp.gmail.com',
+    :port                 =>  587,
     :domain               => 'heroku.com',
     :user_name            => 'footwear.clickjogos@gmail.com',
     :password             => 'clickjogos',
