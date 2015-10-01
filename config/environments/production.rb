@@ -78,17 +78,18 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'http://tcc-rails.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
-
-  ActionMailer::Base.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 =>  587,
-    :domain               => 'heroku.com',
-    :user_name            => 'footwear.clickjogos@gmail.com',
-    :password             => 'clickjogos',
-    :authentication       => :plain,
-    :enable_starttls_auto => true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'tcc-rails.herokuapp.com',
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    user_name: 'footwear.clickjogos@gmail.com',
+    password: 'clickjogos'
   }
 end
