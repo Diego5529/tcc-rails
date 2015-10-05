@@ -30,6 +30,8 @@ Gemfile.lock, .ruby-version, .ruby-gemset
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-
+Gemfile.lock
 # Ignore pow environment settings
 .powenv
+/config/application.yml
+/config/database.yml
