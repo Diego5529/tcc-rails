@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927192028) do
+ActiveRecord::Schema.define(version: 20151110220036) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.integer  "city"
+    t.integer  "state"
+    t.string   "address"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "district"
+    t.string   "zip_code"
+    t.date     "initial_date"
+    t.date     "end_date"
+    t.time     "initial_hour"
+    t.time     "end_hour"
+    t.string   "status"
+    t.string   "archived"
+    t.integer  "min_user"
+    t.integer  "max_user"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

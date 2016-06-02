@@ -1,0 +1,102 @@
+<% content_for :page_header do %>
+  <h1 class="heading text-left">Relatório de Horas
+    <small>
+		  <i class="ace-icon fa fa-angle-double-right"></i>
+		  Visualize os seus registros de forma fácil
+		</small>
+    <%= link_to 'Registrar agora', add_now_day_records_path, class: 'btn btn-success btn-sm', method: :post %>
+  </h1>
+<% end %>
+<%= render 'search_range', from: @from, to: @to, balance_period: @balance_period %>
+<div class="row">
+  <div class="col-xs-12 table-list-container">
+    <table class="table table-bordered table-hover table-list-records">
+      <thead>
+        <tr>
+          <th class="text-left col-md-1">Dia</th>
+          <% @max_time_records.times do |index| %>
+            <th class="text-center col-md-1"><%= get_time_label_from_number(index) %></th>
+          <% end %>
+          <th class="text-center col-md-1" >Total</th>
+          <th class="text-center col-md-1" >Saldo</th>
+          <th class="text-center col-md-1" >Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @day_records.each do |day_record| %>
+        <tr title="<%= day_record.observations %>">
+          <td>
+            <h5 class="text-left"><%= l day_record.reference_date, format: :short %>
+              <%= display_labor_laws_violations(day_record, current_user.current_account) %>
+            </h5>
+          </td>
+          <% @max_time_records.times do |index| %>
+            <td class="text-center">
+              <p class="time-p">
+                <%= day_record.time_records.try(:[], index).try(:time).try(:to_s, :time) %>
+              </p>
+            </td>
+          <% end %>
+
+          <td class="text-center">
+            <p class="time-p">
+              <span><%= day_record.total_worked.to_s(:time) %></span>
+            </p>
+          </td>
+          <td class="text-center">
+            <p class="time-p text-<%= get_color_balance(day_record.balance) %>">
+              <strong><%= day_record.balance %></strong>
+              <i class="fa <%= get_icon_balance(day_record.balance) %>"></i>
+            </p>
+          </td>
+          <td class="text-center">
+            <%= link_to edit_day_record_path(day_record), class: 'btn btn-primary btn-xs' do %>
+              <i class="fa fa-pencil-square-o"></i>
+              <%= t('helpers.links.edit') %>
+            <% end %>
+
+            <%= link_to day_record_path(day_record), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs btn-danger' do %>
+              <i class="fa fa-trash-o"></i>
+              <%= t('helpers.links.destroy') %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="box-footer clearfix">
+       <%= paginate @day_records %>
+    </div>
+  </div>
+</div>
+
+<script charset="utf-8">
+  $(function(){
+    moment.locale('pt-br');
+
+    $('#daterange-btn').daterangepicker({
+      format: 'DD/MM/YYYY',
+      ranges: {
+        'Hoje': [moment(), moment()],
+        'Ontem': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Últimos 7 dias': [moment().subtract(6, 'days'), moment()],
+        'Últimos 30 dias': [moment().subtract(29, 'days'), moment()],
+        'Esse mês': [moment().startOf('month'), moment().endOf('month')]
+      },
+      locale: {
+        applyLabel: 'Aplicar',
+        cancelLabel: 'Cancelar',
+        fromLabel: 'De',
+        toLabel: 'Até',
+        weekLabel: 'W',
+        customRangeLabel: 'Personalizar Data'
+      },
+      startDate: moment().subtract(29, 'days'),
+      endDate: moment()
+    },
+    function(start, end) {
+      $('#date_range_from').val(start.format('DD/MM/YYYY'));
+      $('#date_range_to').val(end.format('DD/MM/YYYY'));
+    });
+  });
+</script>

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  short_description: MyString
+  long_description: MyText
+  city: 1
+  state: 1
+  address: MyString
+  number: MyString
+  complement: MyString
+  district: MyString
+  zip_code: MyString
+  initial_date: 2015-11-10
+  end_date: 2015-11-10
+  initial_hour: 2015-11-10 20:00:36
+  end_hour: 2015-11-10 20:00:36
+  status: MyString
+  archived: MyString
+  min_user: 1
+  max_user: 1
+
+two:
+  name: MyString
+  short_description: MyString
+  long_description: MyText
+  city: 1
+  state: 1
+  address: MyString
+  number: MyString
+  complement: MyString
+  district: MyString
+  zip_code: MyString
+  initial_date: 2015-11-10
+  end_date: 2015-11-10
+  initial_hour: 2015-11-10 20:00:36
+  end_hour: 2015-11-10 20:00:36
+  status: MyString
+  archived: MyString
+  min_user: 1
+  max_user: 1

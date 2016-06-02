@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @event.short_description %>
+</p>
+
+<p>
+  <strong>Long description:</strong>
+  <%= @event.long_description %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @event.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @event.state %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.address %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @event.number %>
+</p>
+
+<p>
+  <strong>Complement:</strong>
+  <%= @event.complement %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @event.district %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @event.zip_code %>
+</p>
+
+<p>
+  <strong>Initial date:</strong>
+  <%= @event.initial_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
+  <strong>Initial hour:</strong>
+  <%= @event.initial_hour %>
+</p>
+
+<p>
+  <strong>End hour:</strong>
+  <%= @event.end_hour %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @event.status %>
+</p>
+
+<p>
+  <strong>Archived:</strong>
+  <%= @event.archived %>
+</p>
+
+<p>
+  <strong>Min user:</strong>
+  <%= @event.min_user %>
+</p>
+
+<p>
+  <strong>Max user:</strong>
+  <%= @event.max_user %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

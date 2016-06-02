@@ -1,0 +1,5 @@
+<%- model_class = DayRecord -%>
+<% content_for :page_header do %>
+  <h1><%= "#{t('helpers.titles.new')} #{model_class.model_name.human.titleize}" %></h1>
+<% end %>
+<%= render 'form', day_record: @day_record %>
