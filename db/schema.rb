@@ -11,7 +11,124 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110220036) do
+ActiveRecord::Schema.define(version: 20160607003743) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.string   "zip_code"
+    t.integer  "ddd"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "min_users"
+    t.integer  "max_users"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_categories", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.string   "long_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.string   "long_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.integer  "city_id"
+    t.string   "address"
+    t.string   "address_complement"
+    t.string   "number"
+    t.string   "district"
+    t.string   "zip_code"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "url_site"
+    t.string   "facebook_page"
+    t.date     "initial_date"
+    t.date     "end_date"
+    t.time     "initial_hour"
+    t.time     "end_hour"
+    t.string   "status"
+    t.text     "note"
+    t.boolean  "archive"
+    t.integer  "event_type_id"
+    t.integer  "event_category_id"
+    t.boolean  "use_password"
+    t.string   "password"
+    t.string   "confirm_password"
+    t.integer  "min_users"
+    t.integer  "max_users"
+    t.integer  "company_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "invitation_types", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "invitation_type_id"
+    t.integer  "guest_user"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_company_types", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "user_type"
+    t.boolean  "active"
+    t.boolean  "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
