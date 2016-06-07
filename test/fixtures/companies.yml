@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  min_users: 1
+  max_users: 1
+
+two:
+  title: MyString
+  description: MyString
+  min_users: 1
+  max_users: 1
