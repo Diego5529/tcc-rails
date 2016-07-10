@@ -1,0 +1,14 @@
+%h1 Listing Countries
+
+- @countries.each do |country|
+  %b Name:
+  = country.name
+  %b Initials:
+  = country.initials
+  = link_to 'Edit', edit_country_path(country)
+  = link_to 'Show', country_path(country)
+  = link_to 'Delete', country_path(country), method: :delete, data: { confirm: 'Are you sure?' }
+  %br
+
+%br
+= link_to 'New Country', new_country_path
