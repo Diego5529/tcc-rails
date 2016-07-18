@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TccRails</title>
+  <title>TCC Rails</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="/">THE TCC RAILS</a>
-      <p class="navbar-text pull-right">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-        <% end %>
-      </p>
-    </div>
-  </div>
+<nav class="navbar navbar-default" role="navigation">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="#">TCC RAILS</a>
 </div>
-
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav">
+<li class="<%= active?('public')%>">
+<a href="/">Home</a>
+</li>
+<li class="<%= active?('countries')%>">
+<a href="/countries">Country</a>
+</li>
+<% if user_signed_in? %>
+    Logged in as <strong><%= current_user.name %></strong>.
+  <li class="<%= active?('public')%>">
+    <%= link_to 'Edit profile', edit_user_registration_path %>
+  </li>
+  <li>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  </li>
+<% else %>
+  <li class="<%= active?('devise/registrations')%>">
+    <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+    <li class="<%= active?('devise/sessions')%>"> <%= link_to "Login", new_user_session_path %>
+    </li>
 <% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
+</ul>
+</div><!-- /.navbar-collapse -->
+</nav>
+
+<% flash.each do |type, message| %>
+  <div class="alert <%= bootstrap_class_for(type) %> fade in">
+    <button class="close" data-dismiss="alert">x</button>
+    <%= message %>
+    </div>
 <% end %>
 
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>
