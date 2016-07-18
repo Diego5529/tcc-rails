@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <title>TCC Rails</title>
@@ -22,22 +22,24 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav">
-<li class="<%= active?('public')%>">
-<a href="/">Home</a>
+<li class="<%= active?('countries')%>">
+<a href="/admin/countries">Country</a>
 </li>
-<% if user_signed_in? %>
-    Logged in as <strong><%= current_user.name %></strong>.
+<% if admin_signed_in? %>
   <li class="<%= active?('public')%>">
-    <%= link_to 'Edit profile', edit_user_registration_path %>
+    <%= link_to 'Edit profile', edit_admin_registration_path %>
   </li>
   <li>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
+  </li>
+  <li>
+    <%= current_admin.email %>
   </li>
 <% else %>
   <li class="<%= active?('devise/registrations')%>">
-    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign up", new_admin_registration_path %>
     </li>
-    <li class="<%= active?('devise/sessions')%>"> <%= link_to "Login", new_user_session_path %>
+    <li class="<%= active?('devise/sessions')%>"> <%= link_to "Login", new_admin_session_path %>
     </li>
 <% end %>
 </ul>

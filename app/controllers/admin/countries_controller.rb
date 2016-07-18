@@ -1,5 +1,4 @@
-class CountriesController < ApplicationController
-
+class Admin::CountriesController < Admin::AdminsController
   def index
     @countries = Country.all
   end
@@ -14,7 +13,7 @@ class CountriesController < ApplicationController
     if @country.errors.any?
       render :new
     else
-      redirect_to countries_path
+      redirect_to admin_countries_path
     end
   end
 
@@ -26,7 +25,7 @@ class CountriesController < ApplicationController
     find_params
     @country.update_attributes(permitted_columns)
 
-    redirect_to countries_path
+    redirect_to admin_countries_path
   end
 
   def show
@@ -35,9 +34,12 @@ class CountriesController < ApplicationController
 
   def destroy
     find_params
-    @country.destroy
-
-    redirect_to countries_path, notice: 'Delete success'
+    if @country.destroy
+      flash[:notice] = 'Delete success'
+    else
+      flash[:notice] = 'Delete error'
+    end
+    redirect_to admin_countries_path
   end
 
   private

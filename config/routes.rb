@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   get 'countries/new'
 
   devise_for :users
@@ -8,7 +9,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'public#index'
 
-  resources :countries
+  namespace :admin do
+    root 'admins#index'
+    resources :countries
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
