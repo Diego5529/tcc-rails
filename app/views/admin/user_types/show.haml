@@ -1,0 +1,15 @@
+%h1 Show User Category
+
+%p
+  %b Title:
+  = @user_type.title
+
+%p
+  %b Short Description:
+  = @user_type.short_description
+
+%p
+  %b Long Description:
+  = @user_type.long_description
+
+= link_to 'Back', admin_user_types_url

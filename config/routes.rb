@@ -11,7 +11,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'admins#index'
+    resources :cities
     resources :countries
+    resources :event_categories
+    resources :event_types
+    resources :invitation_types
+    resources :states
+    resources :user_types
   end
 
   # Example of regular route:

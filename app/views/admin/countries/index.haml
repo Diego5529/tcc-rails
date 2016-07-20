@@ -10,6 +10,7 @@
         %td= link_to country.name, admin_country_url(country)
         %td= country.initials
         %td
-          = link_to 'Edit', edit_admin_country_path(country), :class => 'btn btn-mini'
-          = link_to 'Delete', admin_country_url(country), :method => :delete, :class => 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
-= link_to 'New country', new_admin_country_path, :class => 'btn btn-primary'
+          = link_to 'Edit', edit_admin_country_path(country), class: 'btn btn-warning'
+          = link_to 'Delete', admin_country_url(country), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+          = link_to '+ State', new_admin_state_path(country), class: 'btn btn-info'
+= link_to 'New country', new_admin_country_path, class: 'btn btn-primary'

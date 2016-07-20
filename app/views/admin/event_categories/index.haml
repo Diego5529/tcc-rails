@@ -1,0 +1,15 @@
+%h1 Event Category
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Short Description
+  %tbody
+    - @event_categories.each do |event_category|
+      %tr
+        %td= link_to event_category.title, admin_event_category_url(event_category)
+        %td= event_category.short_description
+        %td
+          = link_to 'Edit', edit_admin_event_category_path(event_category), class: 'btn btn-warning'
+          = link_to 'Delete', admin_event_category_url(event_category), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New Event Category', new_admin_event_category_path, class: 'btn btn-primary'

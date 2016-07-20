@@ -1,0 +1,15 @@
+%h1 Event Type
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Short Description
+  %tbody
+    - @event_types.each do |event_type|
+      %tr
+        %td= link_to event_type.title, admin_event_type_url(event_type)
+        %td= event_type.short_description
+        %td
+          = link_to 'Edit', edit_admin_event_type_path(event_type), class: 'btn btn-warning'
+          = link_to 'Delete', admin_event_type_url(event_type), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New Event Type', new_admin_event_type_path, class: 'btn btn-primary'

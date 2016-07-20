@@ -1,0 +1,31 @@
+= simple_form_for [:admin, @user_type], html: {multipart: true} do |f|
+  - if @user_type.errors.any?
+    %h2
+      = pluralize(@user_type.errors.count, 'error')
+      prohibited
+      this user_type from being saved:
+    %ul
+      - @user_type.errors.full_messages.each do |m|
+        %li= m
+
+  .field
+    %p
+      %b
+        = f.label :title
+      %br
+      = f.text_field :title
+
+    %p
+      %b
+        = f.label :short_description
+      %br
+      = f.text_field :short_description
+
+    %p
+      %b
+        = f.label :long_description
+      %br
+      = f.text_field :long_description
+
+    %p
+      = f.button :submit, 'Save', class: 'btn btn-primary'

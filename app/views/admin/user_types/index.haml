@@ -1,0 +1,15 @@
+%h1 User Type
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Short Description
+  %tbody
+    - @user_types.each do |user_type|
+      %tr
+        %td= link_to user_type.title, admin_user_type_url(user_type)
+        %td= user_type.short_description
+        %td
+          = link_to 'Edit', edit_admin_user_type_path(user_type), class: 'btn btn-warning'
+          = link_to 'Delete', admin_user_type_url(user_type), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New User Type', new_admin_user_type_path, class: 'btn btn-primary'

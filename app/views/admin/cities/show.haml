@@ -1,0 +1,15 @@
+%h1 Show City
+
+%p
+  %b Name:
+  = @city.name
+
+%p
+  %b State:
+  = @city.state.name
+
+%p
+  %b Country:
+  = @city.state.country.name
+
+= link_to 'Back', admin_cities_url

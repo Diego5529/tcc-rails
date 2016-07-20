@@ -1,0 +1,15 @@
+%h1 Show Event Type
+
+%p
+  %b Title:
+  = @event_type.title
+
+%p
+  %b Short Description:
+  = @event_type.short_description
+
+%p
+  %b Long Description:
+  = @event_type.long_description
+
+= link_to 'Back', admin_event_types_url

@@ -1,0 +1,15 @@
+%h1 Show Invitation Type
+
+%p
+  %b Title:
+  = @invitation_type.title
+
+%p
+  %b Short Description:
+  = @invitation_type.short_description
+
+%p
+  %b Long Description:
+  = @invitation_type.long_description
+
+= link_to 'Back', admin_invitation_types_url
