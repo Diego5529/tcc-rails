@@ -1,0 +1,15 @@
+%h1 Invitation Type
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Short Description
+  %tbody
+    - @invitation_types.each do |invitation_type|
+      %tr
+        %td= link_to invitation_type.title, admin_invitation_type_url(invitation_type)
+        %td= invitation_type.short_description
+        %td
+          = link_to 'Edit', edit_admin_invitation_type_path(invitation_type), class: 'btn btn-warning'
+          = link_to 'Delete', admin_invitation_type_url(invitation_type), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New Invitation Type', new_admin_invitation_type_path, class: 'btn btn-primary'

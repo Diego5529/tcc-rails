@@ -1,0 +1,18 @@
+%h1 States
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Initials
+      %th Country
+  %tbody
+    - @states.each do |state|
+      %tr
+        %td= link_to state.name, admin_state_url(state)
+        %td= state.initials
+        %td= state.country.name
+        %td
+          = link_to 'Edit', edit_admin_state_path(state), class: 'btn btn-warning'
+          = link_to 'Delete', admin_state_url(state), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+          = link_to '+ City', new_admin_city_path(state), class: 'btn btn-info'
+= link_to 'New state', new_admin_state_path, class: 'btn btn-primary'

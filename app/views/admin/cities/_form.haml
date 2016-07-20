@@ -1,0 +1,34 @@
+= simple_form_for [:admin, @city], html: {multipart: true} do |f|
+  - if @city.errors.any?
+    %h2
+      = pluralize(@city.errors.count, 'error')
+      prohibited
+      this city from being saved:
+    %ul
+      - @city.errors.full_messages.each do |m|
+        %li= m
+
+  .field
+    %p
+      %b
+        = f.label :name
+      %br
+      = f.text_field :name
+
+    %p
+      %b
+        = f.label :zip_code
+      %br
+      = f.text_field :zip_code
+
+    %p
+      %b
+        = f.label :ddd
+      %br
+      = f.text_field :ddd
+
+    %p
+      = f.collection_select :state_id, State.all, :id, :name_with_initials, {prompt: 'Select a state'}, {class: 'form-control'}
+
+    %p
+      = f.button :submit, 'Save', class: 'btn btn-primary'

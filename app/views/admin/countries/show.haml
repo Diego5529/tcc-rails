@@ -1,0 +1,14 @@
+%h1 Show Country
+
+%p
+  %b Name:
+  = @country.name
+
+%p
+  %b Initials
+  = @country.initials
+
+%p
+  = link_to '+ State', new_admin_state_path(@country), class: 'btn btn-info'
+%br
+= link_to 'Back', admin_countries_url

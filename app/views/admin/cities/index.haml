@@ -1,0 +1,17 @@
+%h1 Cities
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th State
+      %th Country
+  %tbody
+    - @cities.each do |city|
+      %tr
+        %td= link_to city.name, admin_city_url(city)
+        %td= "#{city.state.name} - #{city.state.initials}"
+        %td= city.state.country.name
+        %td
+          = link_to 'Edit', edit_admin_city_path(city), class: 'btn btn-warning'
+          = link_to 'Delete', admin_city_url(city), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New city', new_admin_city_path, class: 'btn btn-primary'

@@ -10,6 +10,9 @@ group :production do
   gem 'pg'
 end
 
+gem 'haml'
+gem 'bootstrap-sass'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,6 +32,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,7 +44,7 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0', group: :development
+gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,7 +53,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'rubocop', require: false
-  gem 'pry-rails'
+  #gem 'pry-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
 end
