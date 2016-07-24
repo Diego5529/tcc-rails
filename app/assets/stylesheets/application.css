@@ -13,7 +13,5 @@
  *= require_tree .
  *= require load_bootstrap
  *= require_self
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  */
-body{
-  background-color: white;
-}

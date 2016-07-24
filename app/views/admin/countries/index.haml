@@ -1,5 +1,6 @@
 %h1 Countries
-%table.table.table-striped
+.table-responsive
+%table.datatable
   %thead
     %tr
       %th Name
@@ -14,3 +15,13 @@
           = link_to 'Delete', admin_country_url(country), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
           = link_to '+ State', new_admin_state_path(country), class: 'btn btn-info'
 = link_to 'New country', new_admin_country_path, class: 'btn btn-primary'
+
+- content_for :javascript do
+  :javascript
+    $('.datatable').dataTable({
+      "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+      "sPaginationType": "bootstrap",
+      "oLanguage": {
+        "sUrl": "/dataTables.#{I18n.locale}.txt"
+      }
+    });
