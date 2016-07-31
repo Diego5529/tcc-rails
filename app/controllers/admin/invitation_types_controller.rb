@@ -1,4 +1,6 @@
 class Admin::InvitationTypesController < Admin::AdminsController
+  before_action :set_admin_invitation_type, only: [:show, :edit, :update, :destroy]
+
   def index
     @invitation_types = InvitationType.all
   end
@@ -18,22 +20,18 @@ class Admin::InvitationTypesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @invitation_type.update_attributes(permitted_columns)
 
     redirect_to admin_invitation_types_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @invitation_type.destroy
       flash[:notice] = 'Delete success'
     else
@@ -43,11 +41,11 @@ class Admin::InvitationTypesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:invitation_type).permit(:title, :short_description, :long_description)
+    def set_admin_invitation_type
+      @invitation_type = InvitationType.find(params[:id])
     end
 
-    def find_params
-      @invitation_type = InvitationType.find(params[:id])
+    def permitted_columns
+      params.require(:invitation_type).permit(:title, :short_description, :long_description)
     end
 end

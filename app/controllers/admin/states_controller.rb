@@ -1,4 +1,6 @@
 class Admin::StatesController < Admin::AdminsController
+  before_action :set_admin_state, only: [:show, :edit, :update, :destroy]
+
   def index
     @states = State.all
   end
@@ -19,22 +21,18 @@ class Admin::StatesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @state.update_attributes(permitted_columns)
 
     redirect_to admin_states_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @state.destroy
       flash[:notice] = 'Delete success'
     else
@@ -44,11 +42,11 @@ class Admin::StatesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:state).permit(:name, :initials, :country_id)
+    def set_admin_state
+      @state = State.find(params[:id])
     end
 
-    def find_params
-      @state = State.find(params[:id])
+    def permitted_columns
+      params.require(:state).permit(:name, :initials, :country_id)
     end
 end

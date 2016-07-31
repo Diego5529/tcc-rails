@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %title TCC Rails
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default{:role => "navigation"}
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} TCC RAILS
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li{:class => active?('public')}
+            %a{:href => "/"} Home
+          - if user_signed_in?
+            Logged in as
+            = succeed "." do
+              %strong= current_user.name
+            %li{:class => active?('public')}
+              = link_to 'Edit profile', edit_user_registration_path
+            %li
+              = link_to "Logout", destroy_user_session_path, method: :delete
+          - else
+            %li{:class => active?('devise/registrations')}
+              = link_to "Sign up", new_user_registration_path
+            %li{:class => active?('devise/sessions')}
+              = link_to "Login", new_user_session_path
+    - flash.each do |type, message|
+      %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
+        %button.close{"data-dismiss" => "alert"} x
+        = message
+    .container
+      = yield

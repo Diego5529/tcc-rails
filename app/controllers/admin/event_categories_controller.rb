@@ -1,4 +1,6 @@
 class Admin::EventCategoriesController < Admin::AdminsController
+  before_action :set_admin_event_category, only: [:show, :edit, :update, :destroy]
+
   def index
     @event_categories = EventCategory.all
   end
@@ -18,22 +20,18 @@ class Admin::EventCategoriesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @event_category.update_attributes(permitted_columns)
 
     redirect_to admin_event_categories_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @event_category.destroy
       flash[:notice] = 'Delete success'
     else
@@ -43,11 +41,11 @@ class Admin::EventCategoriesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:event_category).permit(:title, :short_description, :long_description)
+    def set_admin_event_category
+      @event_category = EventCategory.find(params[:id])
     end
 
-    def find_params
-      @event_category = EventCategory.find(params[:id])
+    def permitted_columns
+      params.require(:event_category).permit(:title, :short_description, :long_description)
     end
 end

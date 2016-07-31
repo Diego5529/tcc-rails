@@ -1,4 +1,6 @@
 class Admin::UserTypesController < Admin::AdminsController
+  before_action :set_admin_user_type, only: [:show, :edit, :update, :destroy]
+
   def index
     @user_types = UserType.all
   end
@@ -18,22 +20,18 @@ class Admin::UserTypesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @user_type.update_attributes(permitted_columns)
 
     redirect_to admin_user_types_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @user_type.destroy
       flash[:notice] = 'Delete success'
     else
@@ -43,11 +41,11 @@ class Admin::UserTypesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:user_type).permit(:title, :short_description, :long_description)
+    def set_admin_user_type
+      @user_type = UserType.find(params[:id])
     end
 
-    def find_params
-      @user_type = UserType.find(params[:id])
+    def permitted_columns
+      params.require(:user_type).permit(:title, :short_description, :long_description)
     end
 end
