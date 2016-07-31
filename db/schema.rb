@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718184435) do
+ActiveRecord::Schema.define(version: 20160731200358) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -115,9 +115,9 @@ ActiveRecord::Schema.define(version: 20160718184435) do
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "event_id"
-    t.integer  "user_id"
+    t.integer  "guest_user_id"
     t.integer  "invitation_type_id"
-    t.integer  "guest_user"
+    t.integer  "host_user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

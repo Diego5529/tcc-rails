@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admins#index'
     resources :cities
+    resources :companies
     resources :countries
     resources :event_categories
     resources :event_types
     resources :events
+    resources :invitations
     resources :invitation_types
     resources :states
+    resources :user_company_types
     resources :user_types
   end
 

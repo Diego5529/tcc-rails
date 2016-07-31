@@ -1,0 +1,21 @@
+%h1 Invitations
+%table.table.table-striped
+  %thead
+    %tr
+      %th Event
+      %th Guest User
+      %th Host User
+      %th Invitation Type
+  %tbody
+    - @invitations.each do |invitation|
+      = puts invitation
+      %tr
+        %td= invitation.event_id
+        %td= invitation.guest_user_id
+        %td= invitation.host_user_id
+        %td= invitation.invitation_type.title
+        %td
+          = link_to 'Show', admin_invitation_url(invitation), class: 'btn btn-info'
+          = link_to 'Edit', edit_admin_invitation_path(invitation), class: 'btn btn-warning'
+          = link_to 'Delete', admin_invitation_url(invitation), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New invitation', new_admin_invitation_path, class: 'btn btn-primary'

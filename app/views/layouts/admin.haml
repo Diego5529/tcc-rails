@@ -27,10 +27,31 @@
                 %a{:href => "/admin/event_categories"} Event Category
               %li{:class => active?('admin/event_types')}
                 %a{:href => "/admin/event_types"} Event Type
-            %li{:class => active?('admin/user_types')}
-              %a{:href => "/admin/user_types"} User Type
-            %li{:class => active?('admin/invitation_types')}
-              %a{:href => "/admin/invitation_types"} Invitation Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Users
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/user_types')}
+                %a{:href => "/admin/user_types"} User Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Companies
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/companies')}
+                %a{:href => "/admin/companies"} Company
+              %li{:class => active?('admin/user_company_types')}
+                %a{:href => "/admin/user_company_types"} User Company Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Invitations
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/invitations')}
+                %a{:href => "/admin/invitations"} Invitation
+              %li{:class => active?('admin/invitation_types')}
+                %a{:href => "/admin/invitation_types"} Invitation Type
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               Address

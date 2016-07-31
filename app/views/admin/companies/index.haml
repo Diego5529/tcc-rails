@@ -1,0 +1,19 @@
+%h1 Companies
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Min Users
+      %th Max Users
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= link_to company.title, admin_company_url(company)
+        %td= company.description
+        %td= company.min_users
+        %td= company.max_users
+        %td
+          = link_to 'Edit', edit_admin_company_path(company), class: 'btn btn-warning'
+          = link_to 'Delete', admin_company_url(company), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New Company', new_admin_company_path, class: 'btn btn-primary'

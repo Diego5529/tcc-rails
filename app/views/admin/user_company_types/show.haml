@@ -1,0 +1,24 @@
+%h1 Show User Company Type
+
+%p
+  %b User:
+  = @user_company_type.user_id
+
+%p
+  %b User Type:
+  = @user_company_type.user_type.title
+
+%p
+  %b Company:
+  = @user_company_type.company_id
+
+%p
+  %b Active:
+  = @user_company_type.active
+
+%p
+  %b Admin:
+  = @user_company_type.admin
+
+%br
+= link_to 'Back', admin_user_company_types_url
