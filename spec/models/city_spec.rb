@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe City, type: :model do
   context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:zip_code) }
-    it { is_expected.to validate_presence_of(:ddd) }
+    it { is_expected.to validate_presence_of(:state_id) }
   end
 
   context 'associations' do
@@ -25,16 +24,10 @@ RSpec.describe City, type: :model do
       expect(city.errors[:name]).to include("can't be blank")
     end
 
-    it 'without zip_code' do
-      city = FactoryGirl.build(:city, zip_code: nil)
+    it 'without state_id' do
+      city = FactoryGirl.build(:city, state_id: nil)
       city.valid?
-      expect(city.errors[:zip_code]).to include("can't be blank")
-    end
-
-    it 'without ddd' do
-      city = FactoryGirl.build(:city, ddd: nil)
-      city.valid?
-      expect(city.errors[:ddd]).to include("can't be blank")
+      expect(city.errors[:state_id]).to include("can't be blank")
     end
   end
 end
