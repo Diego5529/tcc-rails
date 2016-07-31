@@ -1,0 +1,20 @@
+%h1 Show Company
+
+%p
+  %b Title:
+  = @company.title
+
+%p
+  %b Description:
+  = @company.description
+
+%p
+  %b Min Users:
+  = @company.min_users
+
+%p
+  %b Max Users:
+  = @company.max_users
+
+%br
+= link_to 'Back', admin_companies_url

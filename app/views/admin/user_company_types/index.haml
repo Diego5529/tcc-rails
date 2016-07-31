@@ -1,0 +1,22 @@
+%h1 User Company Types
+%table.table.table-striped
+  %thead
+    %tr
+      %th User
+      %th User Type
+      %th Company
+      %th Active
+      %th Admin
+  %tbody
+    - @user_company_types.each do |user_company_type|
+      %tr
+        %td= user_company_type.user_id
+        %td= user_company_type.user_type.title
+        %td= user_company_type.company_id
+        %td= user_company_type.active
+        %td= user_company_type.admin
+        %td
+          = link_to 'Show', admin_user_company_type_url(user_company_type), class: 'btn btn-info'
+          = link_to 'Edit', edit_admin_user_company_type_path(user_company_type), class: 'btn btn-warning'
+          = link_to 'Delete', admin_user_company_type_url(user_company_type), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New User Company Type', new_admin_user_company_type_path, class: 'btn btn-primary'

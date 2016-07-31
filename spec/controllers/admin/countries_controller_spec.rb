@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CountriesController, type: :controller do
+RSpec.describe Admin::CountriesController, type: :controller do
 
   describe "GET #index" do
     let(:my_countries){ FactoryGirl.create_list(:country, 10) }

@@ -1,4 +1,6 @@
 class Admin::EventTypesController < Admin::AdminsController
+  before_action :set_admin_event_type, only: [:show, :edit, :update, :destroy]
+
   def index
     @event_types = EventType.all
   end
@@ -18,22 +20,18 @@ class Admin::EventTypesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @event_type.update_attributes(permitted_columns)
 
     redirect_to admin_event_types_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @event_type.destroy
       flash[:notice] = 'Delete success'
     else
@@ -43,11 +41,11 @@ class Admin::EventTypesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:event_type).permit(:title, :short_description, :long_description)
+    def set_admin_event_type
+      @event_type = EventType.find(params[:id])
     end
 
-    def find_params
-      @event_type = EventType.find(params[:id])
+    def permitted_columns
+      params.require(:event_type).permit(:title, :short_description, :long_description)
     end
 end

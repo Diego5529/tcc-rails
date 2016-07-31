@@ -1,0 +1,40 @@
+%p#notice= notice
+%h1 Listing Admin Events
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Short description
+      %th City
+      %th Initial date
+      %th End date
+      %th Initial hour
+      %th End hour
+      %th Status
+      %th Archive
+      %th Event type
+      %th Event category
+      %th Min users
+      %th Max users
+      %th Company
+      %th{:colspan => "2"}
+  %tbody
+    - @admin_events.each do |admin_event|
+      %tr
+        %td= link_to admin_event.title, admin_event_url(admin_event)
+        %td= admin_event.short_description
+        %td= admin_event.city.name
+        %td= admin_event.initial_date
+        %td= admin_event.end_date
+        %td= admin_event.initial_hour
+        %td= admin_event.end_hour
+        %td= admin_event.status
+        %td= admin_event.archive
+        %td= admin_event.event_type.title
+        %td= admin_event.event_category.title
+        %td= admin_event.min_users
+        %td= admin_event.max_users
+        %td= admin_event.company_id
+        %td= link_to 'Edit', edit_admin_event_path(admin_event), class: 'btn btn-warning'
+        %td= link_to 'Delete', admin_event_url(admin_event), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+= link_to 'New Event', new_admin_event_path, class: 'btn btn-primary'

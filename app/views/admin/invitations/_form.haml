@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @invitation] do |f|
+  = f.error_notification
+  .form
+    = f.input :event_id
+    = f.input :guest_user_id
+    = f.input :host_user_id
+    = f.label :invitation_type_id
+    = f.collection_select :invitation_type_id, InvitationType.all, :id, :title, {prompt: 'Select a Invitation Type'}, {class: 'form-control'}
+  %br
+  .form-actions
+    = f.button :submit, 'Save', class: 'btn btn-primary'

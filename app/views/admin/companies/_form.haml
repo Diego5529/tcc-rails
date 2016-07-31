@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @company] do |f|
+  = f.error_notification
+  .form
+    = f.input :title
+    = f.input :description
+    = f.input :min_users
+    = f.input :max_users
+  .form-actions
+    = f.button :submit, 'Save', class: 'btn btn-primary'

@@ -1,25 +1,7 @@
-= simple_form_for [:admin, @country], html: {multipart: true} do |f|
-  - if @country.errors.any?
-    %h2
-      = pluralize(@country.errors.count, 'error')
-      prohibited
-      this country from being saved:
-    %ul
-      - @country.errors.full_messages.each do |m|
-        %li= m
-
-  .field
-    %p
-      %b
-        = f.label :name
-      %br
-      = f.text_field :name
-
-    %p
-      %b
-        = f.label :initials
-      %br
-      = f.text_field :initials
-
-    %p
-      = f.button :submit, 'Save', class: 'btn btn-primary'
+= simple_form_for [:admin, @country] do |f|
+  = f.error_notification
+  .form
+    = f.input :name
+    = f.input :initials
+  .form-actions
+  = f.button :submit, 'Save', class: 'btn btn-primary'

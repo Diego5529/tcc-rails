@@ -1,4 +1,6 @@
 class Admin::CitiesController < Admin::AdminsController
+  before_action :set_admin_city, only: [:show, :edit, :update, :destroy]
+
   def index
     @cities = City.all
   end
@@ -19,22 +21,18 @@ class Admin::CitiesController < Admin::AdminsController
   end
 
   def edit
-    find_params
   end
 
   def update
-    find_params
     @city.update_attributes(permitted_columns)
 
     redirect_to admin_cities_path
   end
 
   def show
-    find_params
   end
 
   def destroy
-    find_params
     if @city.destroy
       flash[:notice] = 'Delete success'
     else
@@ -44,11 +42,11 @@ class Admin::CitiesController < Admin::AdminsController
   end
 
   private
-    def permitted_columns
-      params.require(:city).permit(:name, :state_id)
+    def set_admin_city
+      @city = City.find(params[:id])
     end
 
-    def find_params
-      @city = City.find(params[:id])
+    def permitted_columns
+      params.require(:city).permit(:name, :state_id)
     end
 end

@@ -1,0 +1,91 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @admin_event.title
+%p
+  %strong Short description:
+  = @admin_event.short_description
+%p
+  %strong Long description:
+  = @admin_event.long_description
+%p
+  %strong City:
+  = @admin_event.city_id
+%p
+  %strong Address:
+  = @admin_event.address
+%p
+  %strong Address complement:
+  = @admin_event.address_complement
+%p
+  %strong Number:
+  = @admin_event.number
+%p
+  %strong District:
+  = @admin_event.district
+%p
+  %strong Zip code:
+  = @admin_event.zip_code
+%p
+  %strong Latitude:
+  = @admin_event.latitude
+%p
+  %strong Longitude:
+  = @admin_event.longitude
+%p
+  %strong Url site:
+  = @admin_event.url_site
+%p
+  %strong Facebook page:
+  = @admin_event.facebook_page
+%p
+  %strong Initial date:
+  = @admin_event.initial_date
+%p
+  %strong End date:
+  = @admin_event.end_date
+%p
+  %strong Initial hour:
+  = @admin_event.initial_hour
+%p
+  %strong End hour:
+  = @admin_event.end_hour
+%p
+  %strong Status:
+  = @admin_event.status
+%p
+  %strong Note:
+  = @admin_event.note
+%p
+  %strong Archive:
+  = @admin_event.archive
+%p
+  %strong Event type:
+  = @admin_event.event_type_id
+%p
+  %strong Event category:
+  = @admin_event.event_category_id
+%p
+  %strong Use password:
+  = @admin_event.use_password
+%p
+  %strong Password:
+  = @admin_event.password
+%p
+  %strong Confirm password:
+  = @admin_event.confirm_password
+%p
+  %strong Min users:
+  = @admin_event.min_users
+%p
+  %strong Max users:
+  = @admin_event.max_users
+%p
+  %strong Company:
+  = @admin_event.company_id
+
+%br
+= link_to 'Edit', edit_admin_event_path(@admin_event), class: 'btn btn-warning'
+%br
+%br
+= link_to 'Back', admin_events_url

@@ -4,6 +4,7 @@ RSpec.describe State, type: :model do
   context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:initials) }
+    it { is_expected.to validate_presence_of(:country_id) }
   end
 
   context 'associations' do
@@ -28,6 +29,12 @@ RSpec.describe State, type: :model do
       state = FactoryGirl.build(:state, initials: nil)
       state.valid?
       expect(state.errors[:initials]).to include("can't be blank")
+    end
+
+    it 'without country_id' do
+      state = FactoryGirl.build(:state, country_id: nil)
+      state.valid?
+      expect(state.errors[:country_id]).to include("can't be blank")
     end
   end
 end

@@ -1,0 +1,12 @@
+= simple_form_for [:admin, @user_company_type] do |f|
+  = f.error_notification
+  .form
+    = f.input :user_id
+    = f.label :user_type_id
+    = f.collection_select :user_type_id, UserType.all, :id, :title, {prompt: 'Select a User Type'}, {class: 'form-control'}
+    %br
+    = f.input :company_id
+    = f.input :active
+    = f.input :admin
+  .form-actions
+    = f.button :submit, 'Save', class: 'btn btn-primary'
