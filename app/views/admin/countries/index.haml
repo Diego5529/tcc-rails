@@ -1,16 +1,19 @@
 %h1 Countries
-%table.table.table-striped
+%table.table.table-striped#datatable
   %thead
     %tr
       %th Name
       %th Initials
+      %th
+      %th
+      %th
   %tbody
     - @countries.each do |country|
       %tr
         %td= link_to country.name, admin_country_url(country)
         %td= country.initials
-        %td
-          = link_to 'Edit', edit_admin_country_path(country), class: 'btn btn-warning'
-          = link_to 'Delete', admin_country_url(country), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
-          = link_to '+ State', new_admin_state_path(country), class: 'btn btn-info'
+        %td= link_to 'Edit', edit_admin_country_path(country), class: 'btn btn-warning'
+        %td= link_to 'Delete', admin_country_url(country), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }
+        %td= link_to '+ State', new_admin_state_path(country), class: 'btn btn-info'     
+%br
 = link_to 'New country', new_admin_country_path, class: 'btn btn-primary'
