@@ -4,6 +4,13 @@ Rails.application.routes.draw do
 
   root 'public#index'
 
+  namespace :api do
+    resource :user, only: [] do
+      post '/sign_up', to: 'user/registrations#create', on: :collection
+      post '/choose_type', to: 'user/registrations#choose_type', on: :collection
+    end
+  end
+
   namespace :admin do
     root 'admins#index'
     resources :cities

@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'active_model_serializers', '~> 0.10.0'
+
 gem 'simple_form'
 
 gem 'jquery-datatables-rails'
