@@ -4,11 +4,14 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   #before_action :authenticate_user!
 
-  protect_from_forgery with: :exception
+  #protect_from_forgery with: :exception
+  include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :last_name])
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      @user = User.find_by(token: token)
+    end
   end
 end

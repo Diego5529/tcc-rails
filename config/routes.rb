@@ -4,6 +4,18 @@ Rails.application.routes.draw do
 
   root 'public#index'
 
+  namespace :api do
+    resource :user, only: [] do
+      post '/sign_up', to: 'user/registrations#create', on: :collection
+      post '/sign_in', to: 'user/sessions#create', on: :collection
+      post '/account', to: 'user/account#update', on: :collection
+      post '/password', to: 'user/account#update_password', on: :collection
+      get '/reset_password', to: 'user/passwords#new'
+      post '/reset_password', to: 'user/passwords#create'
+      post '/update_password', to: 'user/passwords#update'
+    end
+  end
+
   namespace :admin do
     root 'admins#index'
     resources :cities
