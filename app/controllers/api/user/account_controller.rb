@@ -1,5 +1,9 @@
 class Api::User::AccountController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, except: :index
+
+  def index
+    render json: User.all
+  end
 
   def update
     if @user.update(account_params)

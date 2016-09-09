@@ -8,11 +8,13 @@ Rails.application.routes.draw do
     resource :user, only: [] do
       post '/sign_up', to: 'user/registrations#create', on: :collection
       post '/sign_in', to: 'user/sessions#create', on: :collection
+      post '/omniauth', to: 'user/omniauth_callbacks#create', on: :collection
       post '/account', to: 'user/account#update', on: :collection
       post '/password', to: 'user/account#update_password', on: :collection
       get '/reset_password', to: 'user/passwords#new'
       post '/reset_password', to: 'user/passwords#create'
       post '/update_password', to: 'user/passwords#update'
+      get '/all', to: 'user/account#index', on: :collection
     end
   end
 
