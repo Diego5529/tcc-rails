@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20160826021332) do
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "event_id"
-    t.integer  "guest_user_id"
+    t.integer  "user_id"
     t.integer  "invitation_type_id"
     t.integer  "host_user_id"
     t.datetime "created_at",         null: false
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20160826021332) do
     t.date     "birth_date"
     t.string   "genre"
     t.string   "phone_number"
+    t.boolean  "admin"
     t.string   "token"
     t.string   "uid"
     t.string   "provider"

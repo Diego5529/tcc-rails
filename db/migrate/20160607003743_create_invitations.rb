@@ -4,7 +4,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.integer :event_id
       t.integer :user_id
       t.integer :invitation_type_id
-      t.integer :guest_user
+      t.integer :host_user_id
 
       t.timestamps null: false
     end

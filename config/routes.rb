@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  #devise_for :admins
   devise_for :users
 
   root 'public#index'
@@ -16,20 +18,20 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :admin do
-    root 'admins#index'
-    resources :cities
-    resources :companies
-    resources :countries
-    resources :event_categories
-    resources :event_types
-    resources :events
-    resources :invitations
-    resources :invitation_types
-    resources :states
-    resources :user_company_types
-    resources :user_types
-  end
+  # namespace :admin do
+  #   root 'admins#index'
+  #   resources :cities
+  #   resources :companies
+  #   resources :countries
+  #   resources :event_categories
+  #   resources :event_types
+  #   resources :events
+  #   resources :invitations
+  #   resources :invitation_types
+  #   resources :states
+  #   resources :user_company_types
+  #   resources :user_types
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

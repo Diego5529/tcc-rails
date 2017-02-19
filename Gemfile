@@ -13,6 +13,8 @@ end
 gem 'haml'
 gem 'bootstrap-sass'
 
+gem 'rails_admin'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,7 +40,7 @@ gem 'simple_form'
 
 gem 'jquery-datatables-rails'
 
-gem 'will_paginate'
+#gem 'will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

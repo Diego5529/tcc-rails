@@ -6,5 +6,6 @@ class AddCollunmToUser < ActiveRecord::Migration
     add_column :users, :birth_date, :date
     add_column :users, :genre, :string
     add_column :users, :phone_number, :string
+    add_column :users, :admin, :boolean, default: false
   end
 end
