@@ -13,7 +13,9 @@ end
 gem 'haml'
 gem 'bootstrap-sass'
 
+gem 'devise'
 gem 'rails_admin'
+gem 'cancancan'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -33,7 +35,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'devise'
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'simple_form'

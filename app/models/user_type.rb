@@ -1,6 +1,6 @@
 class UserType < ActiveRecord::Base
   #validations
-  validates :title, :short_description, :long_description, presence:true
+  validates :title, :short_description, presence:true
 
   #associations
   has_many :user_company_types
