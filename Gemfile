@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'rails_admin'
+gem 'rails_admin_rollincode'
 gem 'cancancan'
 
 # Use SCSS for stylesheets

@@ -7,4 +7,12 @@ class UserCompanyType < ActiveRecord::Base
   belongs_to :user_type
   belongs_to :company
   belongs_to :user
+
+  def full_description
+  	u = User.find(user_id)
+  	c = Company.find(company_id)
+  	ut = UserType.find(user_type_id)
+
+  	u.name + ' - ' + c.title + ' - ' + ut.title
+  end
 end
