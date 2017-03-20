@@ -1,0 +1,87 @@
+!!!
+%html
+  %head
+    %title Admin
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse{:role => "navigation"}
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "/admin"} ADMIN
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Events
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/events')}
+                %a{:href => "/admin/events"} Event
+              %li{:class => active?('admin/event_categories')}
+                %a{:href => "/admin/event_categories"} Event Category
+              %li{:class => active?('admin/event_types')}
+                %a{:href => "/admin/event_types"} Event Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Users
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/user_types')}
+                %a{:href => "/admin/user_types"} User Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Companies
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/companies')}
+                %a{:href => "/admin/companies"} Company
+              %li{:class => active?('admin/user_company_types')}
+                %a{:href => "/admin/user_company_types"} User Company Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Invitations
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/invitations')}
+                %a{:href => "/admin/invitations"} Invitation
+              %li{:class => active?('admin/invitation_types')}
+                %a{:href => "/admin/invitation_types"} Invitation Type
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Address
+              %span.caret
+            %ul.dropdown-menu
+              %li{:class => active?('admin/cities')}
+                %a{:href => "/admin/cities"} Cities
+              %li{:class => active?('admin/countries')}
+                %a{:href => "/admin/countries"} Country
+              %li{:class => active?('admin/states')}
+                %a{:href => "/admin/states"} State
+          - if admin_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Logged in as
+                %strong= current_admin.email
+                %span.caret
+              %ul.dropdown-menu
+                %li{:class => active?('public')}
+                  = link_to 'Edit profile', edit_admin_registration_path
+                %li
+                  = link_to 'Logout', destroy_admin_session_path, method: :delete
+          - else
+            %li{:class => active?('devise/registrations')}
+              = link_to "Sign up", new_admin_registration_path
+            %li{:class => active?('devise/sessions')}
+              = link_to "Login", new_admin_session_path
+    - flash.each do |type, message|
+      %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
+        %button.close{"data-dismiss" => "alert"} x
+        = message
+    .container
+      = yield

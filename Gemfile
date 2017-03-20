@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
@@ -17,6 +17,8 @@ gem 'devise'
 gem 'rails_admin'
 gem 'rails_admin_rollincode'
 gem 'cancancan'
+
+gem 'rails-i18n'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -36,7 +38,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers'
 
 gem 'simple_form'
 
@@ -60,12 +62,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   #gem 'pry-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'faker', '1.7.3'
 end
 
 group :test do
@@ -74,5 +77,4 @@ group :test do
   gem 'coveralls', require: false
   gem 'turnip'
   gem 'fuubar'
-  gem 'faker'
 end

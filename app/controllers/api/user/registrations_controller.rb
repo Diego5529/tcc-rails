@@ -5,7 +5,7 @@ class Api::User::RegistrationsController < ApplicationController
     if @user.save
       render json: @user, status: :created, root: :user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors.full_messages
     end
   end
 

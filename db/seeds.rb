@@ -46,6 +46,18 @@ UserCompanyType.create id: 7, user_id: 5, company_id: 1, user_type_id: 3, active
 
 UserCompanyType.create id: 8, user_id: 5, company_id: 2, user_type_id: 3, active: true, admin:false
 
+#EventType
+EventType.create id: 1, title: 'Palestra', short_description: 'Palestra normal.'
+EventType.create id: 2, title: 'Casamento', short_description: 'casamento matrimonial.'
+EventType.create id: 3, title: 'Aniversário', short_description: 'Aniversário normal.'
+EventType.create id: 4, title: 'Aniversário Infantil', short_description: 'Aniversário Infantil.'
+EventType.create id: 5, title: 'Festa Particular', short_description: 'Festa Particular.'
+EventType.create id: 6, title: 'Show', short_description: 'Show'
+EventType.create id: 7, title: 'Apresentação', short_description: 'Apresentação'
+
+#Event
+Event.create id: 1, title: 'Palestra TI IFSP', short_description: 'Palestra no IFSP sobre TI.', address: 'Rua Pedro Cavalo', number: '142', district: 'Portal da Pérola', initial_date: Faker::Date.forward(23), end_date: Faker::Date.forward(25), initial_hour: Time.now.to_datetime, end_hour: Faker::Time.between(DateTime.now - 1, DateTime.now), event_type_id: 1
+
 #Country
 Country.create id: 1, name: 'Brasil', initials: 'BRA'
 

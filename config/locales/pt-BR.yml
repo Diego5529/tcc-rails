@@ -274,7 +274,10 @@ pt-BR:
         one: Tipo de Usuário
         other: Tipos de Usuários
       user_company_type:
-        one: Usuário da Companhia
-        other: Usuários das Companhias
-      attributes:
+        one: Usuário/Companhia
+        other: Usuários/Companhias
+    attributes:
+      user:
         name: Nome
+        email: Email
+        password: Senha

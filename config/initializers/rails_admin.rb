@@ -67,65 +67,54 @@ RailsAdmin.config do |config|
   end
 
   config.model Company do
-    weight -8
+    weight -10
   end
 
   config.model User do
-    parent Company
     weight -9
   end
 
   config.model UserCompanyType do
-    parent User
-    weight -7
+    weight -8
   end
 
   config.model UserType do
-    parent User
-    weight -6
+    weight -7
   end
 
   config.model Event do
     navigation_icon "fa fa-calendar-o"
-    parent Company
-    weight -5
-  end
-
-  config.model EventCategory do
-    parent Event
     weight -6
   end
 
-  config.model EventType do
-    parent Event
+  config.model EventCategory do
     weight -5
+  end
+
+  config.model EventType do
+    weight -4
   end
 
   config.model Invitation do
     navigation_icon "fa fa-ticket"
-    parent Event
-    weight -4
+    weight -3
   end
 
   config.model InvitationType do
-    parent Invitation
-    weight -4
+    weight -2
   end
 
   config.model Country do
     navigation_icon "fa fa-map"
-    parent Event
-    weight -2
+    weight -1
   end
 
   config.model State do
-    parent Country
-    weight -3
+    weight 0
   end
 
   config.model City do
-    parent Country
-    weight -2
+    weight 0
   end
 
   config.actions do

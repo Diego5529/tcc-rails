@@ -2,6 +2,7 @@ class Api::User::SessionsController < ApplicationController
 
   def create
     @user = User.find_for_database_authentication(email: user_params[:email])
+    
     return invalid_login_attempt unless @user.present?
 
     if @user.valid_password?(user_params[:password])
@@ -19,6 +20,6 @@ class Api::User::SessionsController < ApplicationController
   end
 
   def invalid_login_attempt
-    head :unauthorized
+    render json: { errors: 'Invalid email or password.' }
   end
 end

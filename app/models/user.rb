@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   has_many :user_company_types
   
   #validates
-  validates :name, presence: true
+  validates :name, :email, presence: true
+
+  validates_uniqueness_of :name, :email
 
   def self.from_omniauth(auth)
     random_password = SecureRandom.hex(20)

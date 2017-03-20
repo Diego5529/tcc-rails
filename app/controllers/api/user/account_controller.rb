@@ -5,15 +5,15 @@ class Api::User::AccountController < ApplicationController
     if @user.update(account_params)
       head :ok
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def update_password
     if @user.update(password_params)
-      head :ok
+      render json: { message: 'Your account has been successfully changed!' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
