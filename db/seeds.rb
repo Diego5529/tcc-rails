@@ -56,7 +56,7 @@ EventType.create id: 6, title: 'Show', short_description: 'Show'
 EventType.create id: 7, title: 'Apresentação', short_description: 'Apresentação'
 
 #Event
-Event.create id: 1, title: 'Palestra TI IFSP', short_description: 'Palestra no IFSP sobre TI.', address: 'Rua Pedro Cavalo', number: '142', district: 'Portal da Pérola', initial_date: Faker::Date.forward(23), end_date: Faker::Date.forward(25), initial_hour: Time.now.to_datetime, end_hour: Faker::Time.between(DateTime.now - 1, DateTime.now), event_type_id: 1
+Event.create id: 1, company_id: 1, event_type_id: 1, title: 'Palestra TI IFSP', short_description: 'Palestra no IFSP sobre TI.', address: 'Rua Pedro Cavalo', number: '142', district: 'Portal da Pérola', initial_date: Faker::Date.forward(23), end_date: Faker::Date.forward(25), initial_hour: Time.now.to_datetime, end_hour: Faker::Time.between(DateTime.now - 1, DateTime.now)
 
 #Country
 Country.create id: 1, name: 'Brasil', initials: 'BRA'

@@ -15,6 +15,14 @@ Rails.application.routes.draw do
       post '/reset_password', to: 'user/passwords#create'
       post '/update_password', to: 'user/passwords#update'
     end
+
+    resource :user_company_type, only: [] do
+      get '/user_company_types', to: 'user_company_type/user_company_type#index'
+    end
+
+    resource :user_type, only: [] do
+      get '/user_types', to: 'user_type/user_type#index'
+    end
   end
 
   # namespace :admin do

@@ -8,6 +8,8 @@ class UserCompanyType < ActiveRecord::Base
   belongs_to :company
   belongs_to :user
 
+  scope :active, -> { where(active: true) }
+
   def full_description
   	u = User.find(user_id)
   	c = Company.find(company_id)
