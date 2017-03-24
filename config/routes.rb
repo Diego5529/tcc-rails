@@ -16,12 +16,30 @@ Rails.application.routes.draw do
       post '/update_password', to: 'user/passwords#update'
     end
 
+    resource :company, only: [] do
+      get '/companies', to: 'company/company#index'
+      get '/company', to: 'company/company#show'
+    end
+
     resource :user_company_type, only: [] do
       get '/user_company_types', to: 'user_company_type/user_company_type#index'
+      get '/user_company_type', to: 'user_company_type/user_company_type#show'
+      get '/company_types_by_user', to: 'user_company_type/user_company_type#company_types_by_user'
     end
 
     resource :user_type, only: [] do
       get '/user_types', to: 'user_type/user_type#index'
+      get '/user_type', to: 'user_type/user_type#show'
+    end
+
+    resource :event, only: [] do
+      get '/events', to: 'event/event#index'
+      get '/event', to: 'event/event#show'
+      get '/events_by_user', to: 'event/event#events_by_user'
+    end
+
+    resource :event_type, only: [] do
+      get '/event_types', to: 'event_type/event_type#index'
     end
   end
 

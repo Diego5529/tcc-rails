@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   #associations
   has_many :invitation
   has_many :user_company_types
-  
+
   #validates
   validates :name, :email, presence: true
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     create_with(email: auth[:email],
       password: random_password,
       password_confirmation: random_password,
-      name: auth[:name],
+      #name: auth[:name],
     ).find_or_initialize_by(provider: auth[:provider], uid: auth[:uid])
   end
 end
