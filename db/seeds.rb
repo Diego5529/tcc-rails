@@ -1,5 +1,5 @@
 #USERS
-User.create id: 1, name: 'Admin', active: :true, email: 'diego.6.souza@gmail.com', password: '12345678', admin: true
+User.create id: 1, name: 'Admin', active: :true, email: 'diego.6.souza@gmail.com', password: '87654321', admin: true
 
 User.create id: 2, name: 'Julia', active: :true, email: 'julia@gmail.com', password: '12345678', admin: false
 

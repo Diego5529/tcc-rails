@@ -1,11 +1,11 @@
-class Api::Event::EventController < ApplicationController
+class Api::Event::EventsController < ApplicationController
   before_action :set_api_event, only: [:show, :update, :destroy]
 
   # GET /api/events
   def index
-    api_events = Event.all
+    @api_events = Event.all
 
-    render json: { events: api_events }
+    render json: @api_events
   end
 
   # GET /api/events/1
@@ -38,23 +38,10 @@ class Api::Event::EventController < ApplicationController
     @api_event.destroy
   end
 
-  def events_by_user
-    @a = []
-
-    user = User.find_by_email(params[:email])
-
-    if user
-      events_by_user = user.user_company_types.map { |u| u.company.events }.shift.compact
-      render json: { events_by_user: events_by_user }
-    else
-      render json: {message: 'User not found.'}
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_event
-      @api_event = Api::Event.find(params[:id])
+      @api_event = Event.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

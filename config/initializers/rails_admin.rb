@@ -7,7 +7,7 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
-# 
+#
   ## == Cancan ==
   config.authorize_with :cancan
 
@@ -23,7 +23,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
-  config.main_app_name = ["Admin", "Gerenciamento de Eventos"]
+  config.main_app_name = ["Admin", ""]
 
   config.model User do
     navigation_icon 'fa fa-user'
@@ -49,15 +49,15 @@ RailsAdmin.config do |config|
   config.model Company do
 
     navigation_icon 'fa fa-users'
-    
+
     object_label_method do
       :title
     end
-   
+
     create do
       field :title
       field :description
-      
+
       field :current_user, :hidden do
         default_value do
           bindings[:view]._current_user.id

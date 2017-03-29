@@ -32,9 +32,11 @@ Rails.application.routes.draw do
       get '/user_type', to: 'user_type/user_type#show'
     end
 
+    namespace :event do
+      resources :events
+    end
+
     resource :event, only: [] do
-      get '/events', to: 'event/event#index'
-      get '/event', to: 'event/event#show'
       get '/events_by_user', to: 'event/event#events_by_user'
     end
 
