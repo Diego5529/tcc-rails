@@ -14,11 +14,28 @@ Rails.application.routes.draw do
       get '/reset_password', to: 'user/passwords#new'
       post '/reset_password', to: 'user/passwords#create'
       post '/update_password', to: 'user/passwords#update'
+      get '/profile', to: 'user/profile#show'
+      get '/user_by_email', to: 'user/profile#user_by_email'
     end
 
     resource :company, only: [] do
       get '/companies', to: 'company/company#index'
-      get '/company', to: 'company/company#show'
+      get '/company/:id', to: 'company/company#show'
+    end
+
+    resource :city, only: [] do
+      get '/cities', to: 'city/city#index'
+      get '/city/:id', to: 'city/city#show'
+    end
+
+    resource :country, only: [] do
+      get '/countries', to: 'country/country#index'
+      get '/country/:id', to: 'country/country#show'
+    end
+
+    resource :state, only: [] do
+      get '/states', to: 'state/state#index'
+      get '/state/:id', to: 'state/state#show'
     end
 
     resource :user_company_type, only: [] do

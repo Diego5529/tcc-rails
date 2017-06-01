@@ -6,3 +6,12 @@ class City < ActiveRecord::Base
   belongs_to :state
   has_many :events
 end
+
+class State < ActiveRecord::Base
+  #validates
+  validates :name, :initials, :country_id, presence:true
+
+  #associations
+  belongs_to :country
+  has_many :cities
+end

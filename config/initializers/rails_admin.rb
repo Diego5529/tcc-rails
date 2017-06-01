@@ -1,13 +1,10 @@
 RailsAdmin.config do |config|
-
-  ### Popular gems integration
-
   # == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
-#
+
   ## == Cancan ==
   config.authorize_with :cancan
 
@@ -23,10 +20,9 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
-  config.main_app_name = ["Admin", ""]
+  config.main_app_name = ["Administrador", ""]
 
   config.model User do
-    navigation_icon 'fa fa-user'
     edit do
       field :name
       field :email
@@ -39,32 +35,29 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model UserCompanyType do
+  # config.model UserCompanyType do
 
-    object_label_method do
-      :full_description
-    end
-  end
+  #   object_label_method do
+  #     :full_description
+  #   end
+  # end
 
-  config.model Company do
+  # config.model Company do
+  #   object_label_method do
+  #     :title
+  #   end
 
-    navigation_icon 'fa fa-users'
+  #   create do
+  #     field :title
+  #     field :description
 
-    object_label_method do
-      :title
-    end
-
-    create do
-      field :title
-      field :description
-
-      field :current_user, :hidden do
-        default_value do
-          bindings[:view]._current_user.id
-        end
-      end
-    end
-  end
+  #     field :current_user, :hidden do
+  #       default_value do
+  #         bindings[:view]._current_user.id
+  #       end
+  #     end
+  #   end
+  # end
 
   config.model Company do
     weight -10
@@ -83,7 +76,6 @@ RailsAdmin.config do |config|
   end
 
   config.model Event do
-    navigation_icon "fa fa-calendar-o"
     weight -6
   end
 
@@ -96,7 +88,6 @@ RailsAdmin.config do |config|
   end
 
   config.model Invitation do
-    navigation_icon "fa fa-ticket"
     weight -3
   end
 
@@ -105,7 +96,6 @@ RailsAdmin.config do |config|
   end
 
   config.model Country do
-    navigation_icon "fa fa-map"
     weight -1
   end
 

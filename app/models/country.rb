@@ -4,8 +4,4 @@ class Country < ActiveRecord::Base
 
   #associations
   has_many :states
-
-  def name_with_initials
-    "#{name} - #{initials}"
-  end
 end
