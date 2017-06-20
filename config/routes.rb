@@ -21,11 +21,13 @@ Rails.application.routes.draw do
     resource :company, only: [] do
       get '/companies', to: 'company/company#index'
       get '/company/:id', to: 'company/company#show'
+      post '/update', to: 'company/company#update'
+      post '/create', to: 'company/company#create'
     end
 
     resource :city, only: [] do
       get '/cities', to: 'city/city#index'
-      get '/city/:id', to: 'city/city#show'
+      get '/city', to: 'city/city#show'
     end
 
     resource :country, only: [] do
@@ -53,12 +55,24 @@ Rails.application.routes.draw do
       resources :events
     end
 
+    namespace :invitation_type do
+      resources :invitation_types
+    end
+
+    namespace :user do
+      resources :users
+    end
+
     resource :event, only: [] do
       get '/events_by_user', to: 'event/event#events_by_user'
     end
 
     resource :event_type, only: [] do
       get '/event_types', to: 'event_type/event_type#index'
+    end
+
+    resource :event_category, only: [] do
+      get '/event_categories', to: 'event_category/event_categories#index'
     end
   end
 

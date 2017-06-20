@@ -17,4 +17,12 @@ class UserCompanyType < ActiveRecord::Base
 
   	u.name + ' - ' + c.title + ' - ' + ut.title
   end
+
+  def created_at
+    self[:created_at].strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def updated_at
+    self[:updated_at].strftime("%Y-%m-%d %H:%M:%S")
+  end
 end

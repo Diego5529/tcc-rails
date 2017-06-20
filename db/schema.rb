@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(version: 20160826021332) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.string   "short_description"
+    t.string   "long_description"
     t.integer  "min_users"
     t.integer  "max_users"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "countries", force: :cascade do |t|

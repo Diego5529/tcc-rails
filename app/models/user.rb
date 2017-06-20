@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
       password_confirmation: random_password,
     ).find_or_initialize_by(provider: auth[:provider], uid: auth[:uid])
   end
+
+  def created_at
+    self[:created_at].strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def updated_at
+    self[:updated_at].strftime("%Y-%m-%d %H:%M:%S")
+  end
 end
