@@ -11,7 +11,7 @@ class Api::Company::CompanyController < ApplicationController
   end
 
   def update
-    puts '=======', params[:title], '========'
+    puts '===+====', params[:title], '===-====='
     company = Company.update(update_params)
     if company
       head :ok
