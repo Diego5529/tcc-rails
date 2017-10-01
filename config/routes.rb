@@ -55,8 +55,9 @@ Rails.application.routes.draw do
       resources :events
     end
 
-    namespace :invitation_type do
-      resources :invitation_types
+    resource :invitation_type, only: [] do
+      get '/invitation_types', to: 'invitation_type/invitation_types#index'
+      get '/invitation_type', to: 'invitation_type/invitation_type#show'
     end
 
     namespace :user do

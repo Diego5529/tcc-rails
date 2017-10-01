@@ -11,7 +11,7 @@ class Api::Company::CompanyController < ApplicationController
   end
 
   def update
-    puts '===+====', params[:title], '===-====='
+    puts '===+====', params[:id], '===-====='
     company = Company.update(update_params)
     if company
       head :ok
@@ -36,6 +36,6 @@ class Api::Company::CompanyController < ApplicationController
   end
 
   def update_params
-    params.require(:company).permit(:id, :title, :short_description, :long_description, :min_users, :max_users)
+    params.require(:company).permit(:title, :short_description, :long_description, :min_users, :max_users)
   end
 end

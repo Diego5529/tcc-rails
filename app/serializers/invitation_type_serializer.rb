@@ -1,3 +1,3 @@
 class InvitationTypeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :title
 end

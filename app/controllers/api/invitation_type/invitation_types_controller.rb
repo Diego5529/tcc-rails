@@ -1,12 +1,11 @@
 class Api::InvitationType::InvitationTypesController < ApplicationController
 
-  before_action :set_api_invitation_type, only: [:show, :update, :destroy]
+  #before_action :set_api_invitation_type, only: [:show, :update, :destroy]
 
   # GET /api/invitation_types
   def index
-    @api_invitation_types = InvitationType.all
-
-    render json: @api_invitation_types, serializer: nil
+    invitation_types = InvitationType.all
+    render json: { invitation_types: invitation_types }
   end
 
   # GET /api/invitation_types/1
