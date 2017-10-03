@@ -60,6 +60,10 @@ EventType.create id: 7, title: 'Apresentação', short_description: 'Apresentaç
 #Event
 Event.create id: 1, company_id: 1, event_type_id: 1, title: 'Palestra TI IFSP', short_description: 'Palestra no IFSP sobre TI.', address: 'Rua Pedro Cavalo', number: '142', district: 'Portal da Pérola', initial_date: Faker::Date.forward(23), end_date: Faker::Date.forward(25), initial_hour: Time.now.to_datetime, end_hour: Faker::Time.between(DateTime.now - 1, DateTime.now)
 
+#InvitationType
+InvitationType.create id: 1, title: 'Normal', short_description: 'Normal'
+InvitationType.create id: 2, title: 'Premium', short_description: 'Premium'
+
 #Country
 Country.create id: 1, name: 'Brasil', initials: 'BRA'
 
@@ -76,3 +80,5 @@ State.create id: 1, name: 'São Paulo', initials: 'SP', country_id: 1
 
 #City
 City.create id: 1, name: 'Birigui', state_id: 1
+City.create id: 2, name: 'Araçatuba', state_id: 1
+
