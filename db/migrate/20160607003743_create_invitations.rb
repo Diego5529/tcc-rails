@@ -3,7 +3,7 @@ class CreateInvitations < ActiveRecord::Migration
     create_table :invitations do |t|
       t.string :email
       t.integer :event_id
-      t.integer :guest_user_id
+      t.integer :user_id
       t.integer :host_user_id
       t.integer :invitation_type_id
       t.integer :host_user_id

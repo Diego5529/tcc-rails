@@ -51,8 +51,11 @@ Rails.application.routes.draw do
       get '/user_type', to: 'user_type/user_type#show'
     end
 
-    namespace :event do
-      resources :events
+    resource :event, only: [] do
+      get '/events', to: 'event/event#index'
+      get '/event/:id', to: 'event/event#show'
+      post '/update', to: 'event/event#update'
+      post '/create', to: 'event/event#create'
     end
 
     resource :invitation_type, only: [] do

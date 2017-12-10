@@ -31,10 +31,10 @@ class Api::Invitation::InvitationController < ApplicationController
 
   private
   def create_params
-    params.require(:invitation).permit(:email, :event_id, :guest_user_id, :host_user_id, :invitation_id, :invitation_type_id)
+    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_id, :invitation_type_id)
   end
 
   def update_params
-    params.require(:invitation).permit(:email, :event_id, :guest_user_id, :host_user_id, :invitation_id, :invitation_type_id)
+    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_id, :invitation_type_id)
   end
 end

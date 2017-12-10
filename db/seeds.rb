@@ -1,13 +1,13 @@
 #USERS
 User.create id: 1, name: 'Admin', active: :true, email: 'diego.6.souza@gmail.com', password: '87654321', admin: true
 
-User.create id: 2, name: 'Julia', active: :true, email: 'julia@gmail.com', password: '12345678', admin: false
+#User.create id: 2, name: 'Julia', active: :true, email: 'julia@gmail.com', password: '12345678', admin: false
 
-User.create id: 3, name: 'Pedro', active: :true, email: 'pedro@gmail.com', password: '12345678', admin: false
+#User.create id: 3, name: 'Pedro', active: :true, email: 'pedro@gmail.com', password: '12345678', admin: false
 
-User.create id: 4, name: 'Joaquim', active: :true, email: 'joaquim@gmail.com', password: '12345678', admin: false
+#User.create id: 4, name: 'Joaquim', active: :true, email: 'joaquim@gmail.com', password: '12345678', admin: false
 
-User.create id: 5, name: 'João', active: :true, email: 'joao@gmail.com', password: '12345678', admin: false
+#User.create id: 5, name: 'João', active: :true, email: 'joao@gmail.com', password: '12345678', admin: false
 
 #User Type
 UserType.create id: 1, title: 'Admin', short_description: 'Admin de Companhia'

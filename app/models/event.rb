@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   #validations
-  validates :title, :short_description, :address, :number, :district, :initial_date, :end_date, :initial_hour, :end_hour, presence:true
+  validates :title, :short_description, :initial_date, :end_date, :initial_hour, :end_hour, presence:true
 
   #associations
   belongs_to :city

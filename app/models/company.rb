@@ -2,7 +2,7 @@ class Company < ActiveRecord::Base
   #validations
   validates :title, :short_description, presence:true
 
-  # validates_uniqueness_of :title
+  validates_uniqueness_of :title
 
   attr_accessor :current_user
 

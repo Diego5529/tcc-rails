@@ -1,64 +1,40 @@
 class Api::Event::EventController < ApplicationController
-  before_action :set_api_event, only: [:show, :update, :destroy]
 
-  # GET /api/events
   def index
-    api_events = Event.all
-
-    render json: { events: api_events }
+    events = Event.all
+    render json: { events: events }
   end
 
-  # GET /api/events/1
   def show
-    render json: @api_event
+    event = Event.find(params[:id])
+    render json: { event: event }
   end
 
-  # POST /api/events
-  def create
-    @api_event = Event.new(api_event_params)
-
-    if @api_event.save
-      render json: @api_event, status: :created, location: @api_event
-    else
-      render json: @api_event.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /api/events/1
   def update
-    if @api_event.update(api_event_params)
-      render json: @api_event
+    @event = Event.find_by_id(params[:event][:id])
+    event = @event.update(update_params)
+    if event
+      head :ok
     else
-      render json: @api_event.errors, status: :unprocessable_entity
+      render json: event.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/events/1
-  def destroy
-    @api_event.destroy
-  end
-
-  def events_by_user
-    @a = []
-
-    user = User.find_by_email(params[:email])
-
-    if user
-      events_by_user = user.user_company_types.map { |u| u.company.events }.shift.compact
-      render json: { events_by_user: events_by_user }
+  def create
+    @event = Event.new(create_params)
+    if @event.save
+      render json: @event, status: :created, root: :event
     else
-      render json: {message: 'User not found.'}
+      render json: @event.errors.full_messages
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_event
-      @api_event = Api::Event.find(params[:id])
-    end
+  def create_params
+    params.require(:event).permit(:title, :short_description, :long_description, :initial_date, :end_date, :initial_hour, :end_hour, :min_users, :max_users, :company_id)
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def api_event_params
-      params.require(:api_event).permit(:title, :short_description, :long_description, :city_id, :address, :address_complement, :number, :district, :zip_code, :latitude, :longitude, :url_site, :facebook_page, :initial_date, :end_date, :initial_hour, :end_hour, :status, :note, :archive, :event_type_id, :event_category_id, :use_password, :password, :confirm_password, :min_users, :max_users, :company_id)
-    end
+  def update_params
+    params.require(:event).permit(:title, :short_description, :long_description, :initial_date, :end_date, :initial_hour, :end_hour, :min_users, :max_users, :company_id)
+  end
 end
