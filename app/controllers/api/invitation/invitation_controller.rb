@@ -24,6 +24,7 @@ class Api::Invitation::InvitationController < ApplicationController
 
     invitation = @invitation.update(update_params)
     if invitation
+      UserMailer.welcome_email(@user, @invitation.email).deliver_later
       head :ok
     else
       render json: invitation.errors.full_messages, status: :unprocessable_entity
@@ -36,16 +37,15 @@ class Api::Invitation::InvitationController < ApplicationController
     puts "===", @invitation.host_user_id, "==="
 
     if @invitation.user_id == 0
-      user = User.find_by_email(@invitation.email
+      @user = User.find_by_email(@invitation.email)
 
-      puts "===", user, "==="
-
-      if user
-        @invitation.user_id = user_id.id
+      if @user != nil
+        @invitation.user_id = @user.id
       end
     end
 
     if @invitation.save
+      UserMailer.welcome_email(@user, @invitation.email).deliver_now
       render json: @invitation, status: :created, root: :invitation
     else
       render json: @invitation.errors.full_messages
