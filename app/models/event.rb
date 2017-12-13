@@ -16,4 +16,20 @@ class Event < ActiveRecord::Base
   def updated_at
     self[:updated_at].strftime("%Y-%m-%d %H:%M:%S")
   end
+
+  def initial_date
+    self[:initial_date].strftime("%Y-%m-%d")
+  end
+
+  def end_date
+    self[:end_date].strftime("%Y-%m-%d")
+  end
+
+  def initial_hour
+    self[:initial_hour].strftime("%H:%M:%S")
+  end
+
+  def end_hour
+    self[:end_hour].strftime("%H:%M:%S")
+  end
 end

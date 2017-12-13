@@ -25,6 +25,13 @@ Rails.application.routes.draw do
       post '/create', to: 'company/company#create'
     end
 
+    resource :invitation, only: [] do
+      get '/invitations', to: 'invitation/invitation#index'
+      get '/invitation/:id', to: 'invitation/invitation#show'
+      post '/update', to: 'invitation/invitation#update'
+      post '/create', to: 'invitation/invitation#create'
+    end
+
     resource :city, only: [] do
       get '/cities', to: 'city/city#index'
       get '/city', to: 'city/city#show'

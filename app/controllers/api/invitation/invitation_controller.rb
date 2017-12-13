@@ -1,4 +1,5 @@
 class Api::Invitation::InvitationController < ApplicationController
+
   def index
     invitations = Invitation.all
     render json: { invitations: invitations }
@@ -10,8 +11,8 @@ class Api::Invitation::InvitationController < ApplicationController
   end
 
   def update
-    puts '===+====', params[:id], '===-====='
-    invitation = Invitation.update(update_params)
+    @invitation = Invitation.find_by_id(params[:invitation][:id])
+    invitation = @invitation.update(update_params)
     if invitation
       head :ok
     else
@@ -20,7 +21,6 @@ class Api::Invitation::InvitationController < ApplicationController
   end
 
   def create
-    puts '=======', params[:title], '========'
     @invitation = Invitation.new(create_params)
     if @invitation.save
       render json: @invitation, status: :created, root: :invitation
@@ -31,10 +31,10 @@ class Api::Invitation::InvitationController < ApplicationController
 
   private
   def create_params
-    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_id, :invitation_type_id)
+    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_type_id)
   end
 
   def update_params
-    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_id, :invitation_type_id)
+    params.require(:invitation).permit(:email, :event_id, :user_id, :host_user_id, :invitation_type_id)
   end
 end
