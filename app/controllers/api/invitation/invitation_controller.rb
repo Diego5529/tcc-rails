@@ -12,6 +12,16 @@ class Api::Invitation::InvitationController < ApplicationController
 
   def update
     @invitation = Invitation.find_by_id(params[:invitation][:id])
+
+    puts "===", @invitation.host_user_id, "==="
+
+    if @invitation.user_id == 0
+      user = User.find_by_email(@invitation.email)
+      if user
+        @invitation.user_id = user_id.id
+      end
+    end
+
     invitation = @invitation.update(update_params)
     if invitation
       head :ok
@@ -22,6 +32,19 @@ class Api::Invitation::InvitationController < ApplicationController
 
   def create
     @invitation = Invitation.new(create_params)
+
+    puts "===", @invitation.host_user_id, "==="
+
+    if @invitation.user_id == 0
+      user = User.find_by_email(@invitation.email
+
+      puts "===", user, "==="
+
+      if user
+        @invitation.user_id = user_id.id
+      end
+    end
+
     if @invitation.save
       render json: @invitation, status: :created, root: :invitation
     else
