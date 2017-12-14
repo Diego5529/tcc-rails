@@ -28,11 +28,11 @@ module TccRails
     config.active_record.raise_in_transactional_callbacks = true
 
     config.to_prepare do
-        Devise::SessionsController.layout "admin"
-        Devise::RegistrationsController.layout "admin"
-        Devise::ConfirmationsController.layout ""
-        Devise::UnlocksController.layout ""
-        Devise::PasswordsController.layout "admin"
+        Devise::SessionsController.layout "application"
+        Devise::RegistrationsController.layout "application"
+        Devise::ConfirmationsController.layout "application"
+        Devise::UnlocksController.layout "application"
+        Devise::PasswordsController.layout "application"
     end
   end
 end

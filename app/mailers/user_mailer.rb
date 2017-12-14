@@ -1,13 +1,15 @@
 class UserMailer < ApplicationMailer
   default from: 'footwear.clickjogos@gmail.com'
 
-  def welcome_email(user, email)
+  def welcome_email(user, email, event)
     @user = user
-    @url  = 'localhost:3000/admin'
+    @url  = 'http://localhost:3000/admin'
+    @email = email
+    @event = event
     if @user != nil
-      email = @user.email
+      @email = @user.email
     end
 
-    mail(to: email, subject: 'You have an new invitation')
+    mail(to: @email, subject: 'You have an new invitation')
   end
 end

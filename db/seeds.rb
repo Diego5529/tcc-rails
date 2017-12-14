@@ -27,7 +27,7 @@ UserType.create id: 7, title: 'DJ', short_description: 'DJ de Eventos'
 UserType.create id: 8, title: 'Técnico de Som', short_description: 'Técnico de Som do Evento'
 
 #Company
-Company.create id: 1, title: 'IFSP', short_description: 'Eventos IFSP'
+Company.create id: 1, title: 'Sesc', short_description: 'Eventos Sesc'
 
 Company.create id: 2, title: 'Trovata', short_description: 'Eventos da Trovata'
 

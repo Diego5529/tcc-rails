@@ -13,8 +13,6 @@ class Api::Invitation::InvitationController < ApplicationController
   def update
     @invitation = Invitation.find_by_id(params[:invitation][:id])
 
-    puts "===", @invitation.host_user_id, "==="
-
     if @invitation.user_id == 0
       user = User.find_by_email(@invitation.email)
       if user
@@ -24,7 +22,8 @@ class Api::Invitation::InvitationController < ApplicationController
 
     invitation = @invitation.update(update_params)
     if invitation
-      UserMailer.welcome_email(@user, @invitation.email).deliver_later
+      @event = Event.find_by_id(@invitation.event_id)
+      UserMailer.welcome_email(@user, @invitation.email, @event).deliver_now
       head :ok
     else
       render json: invitation.errors.full_messages, status: :unprocessable_entity
@@ -33,8 +32,6 @@ class Api::Invitation::InvitationController < ApplicationController
 
   def create
     @invitation = Invitation.new(create_params)
-
-    puts "===", @invitation.host_user_id, "==="
 
     if @invitation.user_id == 0
       @user = User.find_by_email(@invitation.email)
@@ -45,7 +42,8 @@ class Api::Invitation::InvitationController < ApplicationController
     end
 
     if @invitation.save
-      UserMailer.welcome_email(@user, @invitation.email).deliver_now
+      @event = Event.find_by_id(@invitation.event_id)
+      UserMailer.welcome_email(@user, @invitation.email, @event).deliver_now
       render json: @invitation, status: :created, root: :invitation
     else
       render json: @invitation.errors.full_messages
